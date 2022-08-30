@@ -52,7 +52,9 @@ module.exports = {
             outputPath:'dist'
         }),
         new HtmlWebpackPlugin({
-            title: 'Output Management'
+            title: 'Output Management',
+            libPath: path.resolve(__dirname, 'lib'),
+            template:path.resolve(__dirname, 'index.html')
         })
         // new EncodingPlugin({
         //     encoding:'utf-8'
