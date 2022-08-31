@@ -11,14 +11,6 @@ module.exports = merge(common,{
             {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // you can specify a publicPath here
-                            // by default it uses publicPath in webpackOptions.output
-                            publicPath: path.resolve(__dirname, 'dist'),
-                        },
-                    },
                     "css-loader",
                 ],
             },
@@ -26,11 +18,12 @@ module.exports = merge(common,{
     },
     plugins: [
         new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // all options are optional
             filename: "[name].css",
             chunkFilename: "[id].css",
             ignoreOrder: false, // Enable to remove warnings about conflicting order
+        }),
+        new webpack.ProvidePlugin({
+            join:['lodash','join']
         }),
     ],
 })
